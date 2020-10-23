@@ -64,15 +64,19 @@ public class Pizza extends JFrame {
 
     private void adjustPrice() {
         double basisPreis = 0;
+        double belagPreis = 0;
         switch (checkboxGroup.getSelectedCheckbox().getLabel()) {
             case "klein":
                 basisPreis = 4;
+                belagPreis = 0.5;
                 break;
             case "mittel":
                 basisPreis = 4.5;
+                belagPreis = 0.75;
                 break;
             case "groß":
                 basisPreis = 5;
+                belagPreis = 1;
                 break;
         } // TODO: Datenstruktur mit Pizzagröße und Preis implementieren
         for (Component component : variationPanel.getComponents()) {
@@ -81,7 +85,7 @@ public class Pizza extends JFrame {
             }
             Checkbox checkbox = (Checkbox) component;
             if (checkbox.getState()) {
-                basisPreis += 0.5;
+                basisPreis += belagPreis;
             }
         }
         preisLabel.setText("Preis: " + basisPreis + "€");
